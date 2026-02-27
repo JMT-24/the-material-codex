@@ -1,0 +1,1364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Craftsman's Material Guide</title>
+  <meta name="description" content="A field-ready system for identifying, testing, and grading materials in a post-collapse world. A D&amp;D homebrew crafting reference.">
+  <meta property="og:title" content="The Craftsman's Material Guide">
+  <meta property="og:description" content="A field-ready system for identifying, testing, and grading materials. Written for a world where technology has failed and knowledge must survive.">
+  <meta property="og:type" content="article">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-deep: #0a0a0f;
+      --bg-main: #12121a;
+      --bg-card: #1a1a26;
+      --bg-card-alt: #1e1e2e;
+      --bg-hover: #252538;
+      --border: #2a2a40;
+      --border-accent: #3d3520;
+      --gold: #c9a84c;
+      --gold-light: #e8d48b;
+      --gold-dim: #8a7533;
+      --text: #d4d0c8;
+      --text-dim: #8a8780;
+      --text-bright: #eae6de;
+      --red: #a04040;
+      --red-light: #c46060;
+      --green: #508050;
+      --blue: #506888;
+      --blue-light: #7090b8;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Crimson Text', Georgia, serif;
+      background: var(--bg-deep);
+      color: var(--text);
+      font-size: 18px;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* --- HEADER --- */
+    .hero {
+      position: relative;
+      text-align: center;
+      padding: 5rem 2rem 4rem;
+      background:
+        radial-gradient(ellipse at 50% 0%, rgba(201,168,76,0.08) 0%, transparent 60%),
+        linear-gradient(180deg, #0e0e16 0%, var(--bg-main) 100%);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+    .hero-ornament {
+      color: var(--gold-dim);
+      font-size: 1.5rem;
+      letter-spacing: 1rem;
+      margin-bottom: 1.5rem;
+      user-select: none;
+    }
+
+    .hero h1 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.08em;
+      text-shadow: 0 0 40px rgba(201,168,76,0.15);
+      margin-bottom: 0.5rem;
+    }
+
+    .hero .subtitle {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(0.9rem, 2vw, 1.1rem);
+      color: var(--text-dim);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+    }
+
+    .hero .epigraph {
+      font-style: italic;
+      color: var(--text-dim);
+      max-width: 500px;
+      margin: 0 auto;
+      font-size: 1.05rem;
+      line-height: 1.8;
+    }
+
+    /* --- LAYOUT --- */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* --- NAVIGATION / TOC --- */
+    .toc {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 2rem 2.5rem;
+      margin: 3rem auto;
+      max-width: 700px;
+    }
+
+    .toc h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.2rem;
+      color: var(--gold);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+      text-align: center;
+    }
+
+    .toc ol {
+      list-style: none;
+      counter-reset: toc;
+    }
+
+    .toc ol li {
+      counter-increment: toc;
+      margin-bottom: 0.4rem;
+    }
+
+    .toc ol li a {
+      color: var(--text);
+      text-decoration: none;
+      display: flex;
+      align-items: baseline;
+      gap: 0.8rem;
+      padding: 0.3rem 0.5rem;
+      border-radius: 3px;
+      transition: all 0.2s;
+    }
+
+    .toc ol li a::before {
+      content: counter(toc, upper-roman) ".";
+      font-family: 'Cinzel', serif;
+      color: var(--gold-dim);
+      font-size: 0.85rem;
+      min-width: 2.5rem;
+      text-align: right;
+    }
+
+    .toc ol li a:hover {
+      background: var(--bg-hover);
+      color: var(--gold-light);
+    }
+
+    /* --- SECTIONS --- */
+    .section {
+      margin: 4rem 0;
+    }
+
+    .section-header {
+      position: relative;
+      margin-bottom: 2.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-header::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 80px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .section-number {
+      font-family: 'Cinzel', serif;
+      font-size: 0.8rem;
+      color: var(--gold-dim);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+
+    .section-header h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: 0.04em;
+    }
+
+    h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--gold-light);
+      margin: 2.5rem 0 1rem;
+      letter-spacing: 0.03em;
+    }
+
+    h4 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.05rem;
+      color: var(--text-bright);
+      margin: 1.8rem 0 0.8rem;
+    }
+
+    p { margin-bottom: 1rem; }
+
+    strong { color: var(--text-bright); }
+
+    em { color: var(--text); }
+
+    a {
+      color: var(--gold);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+
+    a:hover { border-bottom-color: var(--gold); }
+
+    /* --- GRADE CARDS --- */
+    .grade-block {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--gold-dim);
+      border-radius: 0 4px 4px 0;
+      padding: 1.5rem 2rem;
+      margin: 2rem 0;
+    }
+
+    .grade-block h3 {
+      margin-top: 0;
+      font-size: 1.15rem;
+    }
+
+    .grade-block .grade-subtitle {
+      font-style: italic;
+      color: var(--text-dim);
+      margin-bottom: 1.2rem;
+    }
+
+    /* --- TABLES --- */
+    .table-wrapper {
+      overflow-x: auto;
+      margin: 1.5rem 0;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+    }
+
+    thead th {
+      font-family: 'Cinzel', serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: var(--bg-card);
+      padding: 0.8rem 1rem;
+      text-align: left;
+      border-bottom: 2px solid var(--gold-dim);
+      white-space: nowrap;
+    }
+
+    tbody tr {
+      border-bottom: 1px solid var(--border);
+      transition: background 0.15s;
+    }
+
+    tbody tr:hover { background: var(--bg-hover); }
+
+    tbody td {
+      padding: 0.6rem 1rem;
+      vertical-align: top;
+    }
+
+    .grade-col {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 500;
+      color: var(--gold-light);
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    .material-name {
+      font-weight: 600;
+      color: var(--text-bright);
+      white-space: nowrap;
+    }
+
+    /* --- REFERENCE TABLE (compact) --- */
+    .ref-table th, .ref-table td {
+      padding: 0.5rem 0.6rem;
+      text-align: center;
+      font-size: 0.88rem;
+    }
+
+    .ref-table td:first-child {
+      text-align: left;
+      padding-left: 1rem;
+    }
+
+    .ref-table th:first-child {
+      text-align: left;
+      padding-left: 1rem;
+    }
+
+    /* color-coded grade cells */
+    .g-low { color: #7a9a6a; }
+    .g-mid { color: var(--gold-light); }
+    .g-high { color: var(--red-light); }
+    .g-na { color: var(--text-dim); }
+
+    /* --- CALLOUTS --- */
+    .callout {
+      background: var(--bg-card);
+      border-left: 3px solid var(--blue);
+      padding: 1.2rem 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 0 4px 4px 0;
+    }
+
+    .callout.warning {
+      border-left-color: var(--red);
+      background: rgba(160,64,64,0.08);
+    }
+
+    .callout.tip {
+      border-left-color: var(--green);
+    }
+
+    .callout-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--gold-dim);
+      margin-bottom: 0.4rem;
+    }
+
+    .callout.warning .callout-label { color: var(--red-light); }
+    .callout.tip .callout-label { color: var(--green); }
+
+    /* --- PROFILE SHEET --- */
+    .profile-sheet {
+      background: var(--bg-card);
+      border: 2px solid var(--border);
+      border-radius: 4px;
+      padding: 2rem;
+      margin: 2rem 0;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      line-height: 2;
+      color: var(--text-dim);
+    }
+
+    .profile-sheet .sheet-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1rem;
+      color: var(--gold);
+      text-align: center;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .profile-sheet .field-label { color: var(--text-bright); }
+    .profile-sheet .field-blank { color: var(--border); }
+
+    /* --- LISTS --- */
+    ul, ol {
+      margin: 0.8rem 0 1rem 1.5rem;
+    }
+
+    li { margin-bottom: 0.3rem; }
+
+    .step-list {
+      list-style: none;
+      counter-reset: steps;
+      margin-left: 0;
+    }
+
+    .step-list > li {
+      counter-increment: steps;
+      position: relative;
+      padding-left: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .step-list > li::before {
+      content: counter(steps);
+      position: absolute;
+      left: 0;
+      top: 0.1em;
+      width: 1.6rem;
+      height: 1.6rem;
+      background: var(--bg-card);
+      border: 1px solid var(--gold-dim);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem;
+      color: var(--gold);
+    }
+
+    /* --- RECOMMENDATION CARDS --- */
+    .rec-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.5rem 2rem;
+      margin: 1.5rem 0;
+      transition: border-color 0.2s;
+    }
+
+    .rec-card:hover {
+      border-color: var(--gold-dim);
+    }
+
+    .rec-card h4 {
+      margin-top: 0;
+      font-size: 1.1rem;
+    }
+
+    .rec-ideal {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      color: var(--gold);
+      background: rgba(201,168,76,0.08);
+      padding: 0.4rem 0.8rem;
+      border-radius: 3px;
+      display: inline-block;
+      margin: 0.5rem 0 0.8rem;
+    }
+
+    .rec-best {
+      font-size: 0.9rem;
+      color: var(--text-dim);
+      margin-top: 0.5rem;
+    }
+
+    .rec-best code {
+      color: var(--gold-light);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+    }
+
+    /* --- CODE --- */
+    code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.88em;
+      background: var(--bg-card);
+      padding: 0.15em 0.4em;
+      border-radius: 3px;
+      color: var(--gold-light);
+    }
+
+    /* --- BLOCKQUOTE --- */
+    blockquote {
+      border-left: 3px solid var(--gold-dim);
+      padding: 0.5rem 1.5rem;
+      margin: 1.5rem 0;
+      color: var(--text-dim);
+      font-style: italic;
+    }
+
+    /* --- DIVIDERS --- */
+    hr {
+      border: none;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+      margin: 3rem 0;
+    }
+
+    .ornament-divider {
+      text-align: center;
+      color: var(--gold-dim);
+      font-size: 1.2rem;
+      letter-spacing: 0.8rem;
+      margin: 3rem 0;
+      user-select: none;
+    }
+
+    /* --- FOOTER --- */
+    .footer {
+      text-align: center;
+      padding: 4rem 2rem 3rem;
+      margin-top: 4rem;
+      border-top: 1px solid var(--border);
+      position: relative;
+    }
+
+    .footer::before {
+      content: '';
+      position: absolute;
+      top: -1px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .footer .quote {
+      font-family: 'Cinzel', serif;
+      font-size: 1.3rem;
+      color: var(--gold);
+      font-style: italic;
+      margin-bottom: 0.5rem;
+    }
+
+    .footer .attribution {
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      color: var(--gold-dim);
+      letter-spacing: 0.05em;
+    }
+
+    /* --- BACK TO TOP --- */
+    .back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 2.5rem;
+      height: 2.5rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      text-decoration: none;
+      font-size: 1.1rem;
+      opacity: 0;
+      transition: opacity 0.3s, background 0.2s;
+      pointer-events: none;
+      z-index: 100;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .back-to-top:hover {
+      background: var(--bg-hover);
+      border-color: var(--gold-dim);
+    }
+
+    /* --- RESPONSIVE --- */
+    @media (max-width: 640px) {
+      body { font-size: 16px; }
+      .hero { padding: 3rem 1.5rem 2.5rem; }
+      .toc { padding: 1.5rem; }
+      .grade-block, .rec-card { padding: 1.2rem; }
+      .profile-sheet { padding: 1rem; font-size: 0.75rem; }
+      table { font-size: 0.82rem; }
+      .ref-table th, .ref-table td { padding: 0.4rem; }
+    }
+
+    /* --- PRINT --- */
+    @media print {
+      body { background: #fff; color: #222; }
+      .back-to-top { display: none; }
+      .hero { border-bottom: 2px solid #333; }
+      .hero h1, .section-header h2, h3, .toc h2 { color: #333; }
+      table, .grade-block, .rec-card, .callout { border-color: #ccc; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="hero" id="top">
+    <div class="hero-ornament">&#x2726; &#x2726; &#x2726;</div>
+    <h1>The Craftsman's Material Guide</h1>
+    <p class="subtitle">A Field-Ready System for Identifying, Testing &amp; Grading Materials</p>
+    <p class="epigraph">
+      Written for a world where technology has failed and knowledge must survive.<br>
+      Keep this guide safe. Copy it. Teach it. It may save lives.
+    </p>
+  </header>
+
+  <main class="container">
+
+    <!-- TABLE OF CONTENTS -->
+    <nav class="toc">
+      <h2>Table of Contents</h2>
+      <ol>
+        <li><a href="#purpose">Purpose of This Guide</a></li>
+        <li><a href="#core-grades">The Four Core Grades</a></li>
+        <li><a href="#testing-methods">Testing Methods (No Technology Required)</a></li>
+        <li><a href="#secondary">Secondary Properties</a></li>
+        <li><a href="#profile-sheet">Material Profile Sheet</a></li>
+        <li><a href="#reference-table">Reference Table: Known Materials</a></li>
+        <li><a href="#unknown">Unknown Materials: How to Identify and Log Them</a></li>
+        <li><a href="#crafting">Crafting Recommendations by Profile</a></li>
+        <li><a href="#testing-station">Building Your Testing Station</a></li>
+        <li><a href="#final-notes">Final Notes</a></li>
+      </ol>
+    </nav>
+
+    <!-- I. PURPOSE -->
+    <section class="section" id="purpose">
+      <div class="section-header">
+        <span class="section-number">Section I</span>
+        <h2>Purpose of This Guide</h2>
+      </div>
+      <p>When machines no longer work, we still need to build, fight, and survive. A blacksmith, leatherworker, or armor-maker needs to know what they're working with &mdash; quickly and reliably.</p>
+      <p>This guide provides a <strong>universal grading system</strong> that any craftsman can use with simple tools. No electricity. No computers. Just your hands, some reference objects, and a basic testing station.</p>
+      <p>Every material &mdash; whether stone, metal, bone, hide, wood, or something from a creature never seen before &mdash; can be graded using this system.</p>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr><th>Code</th><th>Grade</th><th>What It Measures</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="grade-col">H</td><td>Hardness</td><td>How resistant to scratching and denting</td></tr>
+            <tr><td class="grade-col">F</td><td>Flex</td><td>How stiff or bendy it is</td></tr>
+            <tr><td class="grade-col">B</td><td>Break</td><td>How tough it is before shattering</td></tr>
+            <tr><td class="grade-col">D</td><td>Ductility</td><td>How workable / forgeable it is</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>A material is written as: <code>H_/F_/B_/D_</code> &mdash; for example, <code>H7/F8/B4/D2</code></p>
+    </section>
+
+    <!-- II. CORE GRADES -->
+    <section class="section" id="core-grades">
+      <div class="section-header">
+        <span class="section-number">Section II</span>
+        <h2>The Four Core Grades</h2>
+      </div>
+      <p>Each grade runs from <strong>1 to 10</strong>. Higher is "more" of that property.</p>
+
+      <!-- HARDNESS -->
+      <div class="grade-block">
+        <h3>Hardness Grade (H1 &ndash; H10)</h3>
+        <p class="grade-subtitle">How resistant is the surface to scratching and denting?</p>
+        <div class="table-wrapper">
+          <table>
+            <thead><tr><th>Grade</th><th>Description</th><th>Examples</th></tr></thead>
+            <tbody>
+              <tr><td class="grade-col">H1</td><td>Easily scratched by fingernail</td><td>Chalk, soft clay, fat</td></tr>
+              <tr><td class="grade-col">H2</td><td>Scratched by fingernail with effort</td><td>Graphite, lead, gold</td></tr>
+              <tr><td class="grade-col">H3</td><td>Scratched by a copper coin</td><td>Copper, soft bone, some shells</td></tr>
+              <tr><td class="grade-col">H4</td><td>Scratched by an iron nail</td><td>Iron, platinum, most animal teeth</td></tr>
+              <tr><td class="grade-col">H5</td><td>Scratched by a steel knife</td><td>Hard steel, common glass</td></tr>
+              <tr><td class="grade-col">H6</td><td>Barely scratched by steel knife</td><td>Hardened steel, good blades</td></tr>
+              <tr><td class="grade-col">H7</td><td>Cannot be scratched by steel</td><td>Some gemstones, dense bone</td></tr>
+              <tr><td class="grade-col">H8</td><td>Scratches steel easily</td><td>Topaz, hardened monster parts?</td></tr>
+              <tr><td class="grade-col">H9</td><td>Scratches almost everything</td><td>Corundum, sapphire, ruby</td></tr>
+              <tr><td class="grade-col">H10</td><td>Scratches all known materials</td><td>Diamond, or equivalent</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout tip">
+          <div class="callout-label">Test</div>
+          <p>Attempt to scratch the material with each reference tool in order. The highest tool that <em>fails</em> to scratch it determines its grade.</p>
+        </div>
+      </div>
+
+      <!-- FLEX -->
+      <div class="grade-block">
+        <h3>Flex Grade (F1 &ndash; F10)</h3>
+        <p class="grade-subtitle">How much does a standard sample bend under a standard load?</p>
+        <div class="table-wrapper">
+          <table>
+            <thead><tr><th>Grade</th><th>Description</th><th>Examples</th></tr></thead>
+            <tbody>
+              <tr><td class="grade-col">F1</td><td>Bends freely with almost no force</td><td>Soft leather, cloth</td></tr>
+              <tr><td class="grade-col">F2</td><td>Bends easily by hand</td><td>Rawhide, thin copper sheet, rope</td></tr>
+              <tr><td class="grade-col">F3</td><td>Bends with moderate hand force</td><td>Thick leather, green wood</td></tr>
+              <tr><td class="grade-col">F4</td><td>Bends with strong hand force</td><td>Dry hardwood plank, thick hide</td></tr>
+              <tr><td class="grade-col">F5</td><td>Requires leverage or tools to bend</td><td>Wrought iron bar</td></tr>
+              <tr><td class="grade-col">F6</td><td>Barely bends with tools</td><td>Mild steel bar</td></tr>
+              <tr><td class="grade-col">F7</td><td>Extremely stiff, minimal bend under heavy load</td><td>Hard steel</td></tr>
+              <tr><td class="grade-col">F8</td><td>Almost no visible bend</td><td>Dense ceramics, thick bone</td></tr>
+              <tr><td class="grade-col">F9</td><td>No measurable bend under any manual load</td><td>Tungsten-like</td></tr>
+              <tr><td class="grade-col">F10</td><td>Perfectly rigid under all practical forces</td><td>Diamond-like</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout tip">
+          <div class="callout-label">Test</div>
+          <p>Use the Standard Bending Rig. Place a sample across two supports, hang standardized weights from the center, and measure deflection with a marked stick.</p>
+        </div>
+      </div>
+
+      <!-- BREAK -->
+      <div class="grade-block">
+        <h3>Break Grade (B1 &ndash; B10)</h3>
+        <p class="grade-subtitle">How much impact energy can the material absorb before it fractures?</p>
+        <div class="table-wrapper">
+          <table>
+            <thead><tr><th>Grade</th><th>Description</th><th>Examples</th></tr></thead>
+            <tbody>
+              <tr><td class="grade-col">B1</td><td>Shatters from a light tap</td><td>Thin glass, eggshell, charcoal</td></tr>
+              <tr><td class="grade-col">B2</td><td>Breaks from a firm strike</td><td>Pottery, chalk, dried clay</td></tr>
+              <tr><td class="grade-col">B3</td><td>Breaks from a hard hammer blow</td><td>Brick, some ceramics</td></tr>
+              <tr><td class="grade-col">B4</td><td>Breaks from repeated hammer blows</td><td>Cast iron, some bone</td></tr>
+              <tr><td class="grade-col">B5</td><td>Requires heavy strikes to fracture</td><td>Hardwood, antler</td></tr>
+              <tr><td class="grade-col">B6</td><td>Very difficult to break by impact</td><td>Mild steel, dense wood</td></tr>
+              <tr><td class="grade-col">B7</td><td>Resists most impacts</td><td>Quality steel, tough hide</td></tr>
+              <tr><td class="grade-col">B8</td><td>Absorbs extreme impacts</td><td>Spring steel, layered materials</td></tr>
+              <tr><td class="grade-col">B9</td><td>Nearly unbreakable by manual force</td><td>Some alloys, sinew-wrapped</td></tr>
+              <tr><td class="grade-col">B10</td><td>Cannot be fractured by any known manual method</td><td>&mdash;</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout tip">
+          <div class="callout-label">Test</div>
+          <p>Use the Drop Tower. Drop a standardized weight from increasing heights onto a supported sample. Record the height at which the sample cracks or shatters.</p>
+        </div>
+      </div>
+
+      <!-- DUCTILITY -->
+      <div class="grade-block">
+        <h3>Ductility Grade (D1 &ndash; D10)</h3>
+        <p class="grade-subtitle">How much can the material be reshaped without breaking?</p>
+        <div class="table-wrapper">
+          <table>
+            <thead><tr><th>Grade</th><th>Description</th><th>Examples</th></tr></thead>
+            <tbody>
+              <tr><td class="grade-col">D1</td><td>Cannot be reshaped; shatters or crumbles</td><td>Glass, chalk, charcoal, brittle ceramics</td></tr>
+              <tr><td class="grade-col">D2</td><td>Slight reshaping before cracking</td><td>Cast iron, some crystals</td></tr>
+              <tr><td class="grade-col">D3</td><td>Minor cold-working possible with care</td><td>Hard bronze, bone</td></tr>
+              <tr><td class="grade-col">D4</td><td>Can be shaped with heat and effort</td><td>Wrought iron, some horn</td></tr>
+              <tr><td class="grade-col">D5</td><td>Shapes well with heat</td><td>Mild steel, standard forging metal</td></tr>
+              <tr><td class="grade-col">D6</td><td>Shapes well even cold</td><td>Copper, silver</td></tr>
+              <tr><td class="grade-col">D7</td><td>Very easily shaped</td><td>Annealed copper, thin sheets</td></tr>
+              <tr><td class="grade-col">D8</td><td>Can be drawn into wire or hammered very thin</td><td>Gold, lead</td></tr>
+              <tr><td class="grade-col">D9</td><td>Extremely malleable and ductile</td><td>Pure gold, soft solder</td></tr>
+              <tr><td class="grade-col">D10</td><td>Can be reshaped almost without limit</td><td>Theoretical perfect</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout">
+          <div class="callout-label">Note on Heat</div>
+          <p>Some materials change grade dramatically when heated. Always record both cold and hot grades where possible: <code>D3(cold) / D7(hot)</code> &mdash; hard to work cold, very workable hot.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- III. TESTING METHODS -->
+    <section class="section" id="testing-methods">
+      <div class="section-header">
+        <span class="section-number">Section III</span>
+        <h2>Testing Methods</h2>
+      </div>
+      <p>Each test is designed to be performed by one or two people with simple tools. No technology required.</p>
+
+      <h3>Scratch Test (for Hardness)</h3>
+      <h4>Required Tools &mdash; The "Scratch Kit"</h4>
+      <ol>
+        <li>Your fingernail</li>
+        <li>A copper coin or copper rod</li>
+        <li>An iron nail</li>
+        <li>A steel knife blade (known good steel)</li>
+        <li>A piece of quartz (common clear/white rock crystal)</li>
+        <li>A corundum fragment (if available &mdash; ruby, sapphire, emery stone)</li>
+        <li>A diamond chip (if available)</li>
+      </ol>
+
+      <h4>Procedure</h4>
+      <ol class="step-list">
+        <li>Clean the material surface.</li>
+        <li>Starting from softest tool (fingernail), firmly drag each tool across the surface with moderate pressure.</li>
+        <li>Check for a visible scratch mark (not just a color streak &mdash; wipe the area and look for an actual groove).</li>
+        <li>The grade equals the highest reference tool that <em>fails</em> to scratch the material, plus one.</li>
+        <li>If the material scratches your steel knife, it is at least H7. Continue with harder references if available.</li>
+      </ol>
+
+      <div class="callout tip">
+        <div class="callout-label">Tips</div>
+        <ul>
+          <li>Always scratch in the same direction.</li>
+          <li>Use a magnifying lens if available to confirm fine scratches.</li>
+          <li>Test multiple spots &mdash; some materials are harder on the surface.</li>
+        </ul>
+      </div>
+
+      <h3>Bend Test (for Flex)</h3>
+      <h4>Required Tools</h4>
+      <ul>
+        <li>The Standard Bending Rig (two supports, one span apart)</li>
+        <li>A set of standardized weights (see <a href="#testing-station">Section IX</a>)</li>
+        <li>A measuring stick marked in small increments</li>
+      </ul>
+
+      <h4>Procedure</h4>
+      <ol class="step-list">
+        <li>Prepare a sample of standard dimensions: <strong>Bar:</strong> 1 hand-span long, 1 thumb-width wide, 1 finger thick. <strong>Sheet:</strong> 1 hand-span long, 4 fingers wide.</li>
+        <li>Place the sample across the two supports of the bending rig.</li>
+        <li>Hang the lightest weight from the center point.</li>
+        <li>Measure how far the center sags below the support line.</li>
+        <li>Add heavier weights step by step, recording sag each time.</li>
+        <li>Compare sag values to the Flex Grade reference table.</li>
+        <li>If the sample breaks during testing, note the weight and record this for the Break Grade as well.</li>
+      </ol>
+
+      <h4>Standard Weight Set</h4>
+      <div class="table-wrapper">
+        <table>
+          <thead><tr><th>Weight</th><th>Approx. Mass</th></tr></thead>
+          <tbody>
+            <tr><td>Weight 1</td><td>~0.5 kg (a small stone, the size of a fist)</td></tr>
+            <tr><td>Weight 2</td><td>~1 kg</td></tr>
+            <tr><td>Weight 3</td><td>~2 kg</td></tr>
+            <tr><td>Weight 4</td><td>~5 kg</td></tr>
+            <tr><td>Weight 5</td><td>~10 kg</td></tr>
+            <tr><td>Weight 6</td><td>~20 kg</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout">
+        <div class="callout-label">Calibration</div>
+        <p>Calibrate your weights against water: 1 liter of water = 1 kg.</p>
+      </div>
+
+      <h3>Drop Test (for Break Grade)</h3>
+      <h4>Required Tools</h4>
+      <ul>
+        <li>The Drop Tower (a tall post with height markings and a guide channel for the drop weight)</li>
+        <li>A standardized drop weight (~2 kg iron block or heavy stone)</li>
+        <li>A flat anvil or stone base</li>
+      </ul>
+
+      <h4>Procedure</h4>
+      <ol class="step-list">
+        <li>Prepare a standard sample (same dimensions as Bend Test).</li>
+        <li>Place the sample flat on the anvil/base, supported at the ends (bridged).</li>
+        <li>Raise the drop weight to the lowest height mark (~10 cm).</li>
+        <li>Release the weight so it falls onto the center of the sample.</li>
+        <li>Inspect for cracks, chips, fractures, or full break.</li>
+        <li>If intact, increase height and repeat.</li>
+        <li>Record the height at which the material first shows damage, and the height at which it fully breaks.</li>
+        <li>Compare to the Break Grade reference table.</li>
+      </ol>
+
+      <h3>Forge Test (for Ductility)</h3>
+      <h4>Required Tools</h4>
+      <ul>
+        <li>A hammer (medium weight)</li>
+        <li>An anvil or large flat stone</li>
+        <li>A heat source (forge, campfire with bellows, or equivalent)</li>
+        <li>Tongs</li>
+      </ul>
+
+      <h4>Cold Test</h4>
+      <ol class="step-list">
+        <li>Take a small sample bar.</li>
+        <li>Attempt to bend it 90 degrees by hand or with pliers.</li>
+        <li>Observe: Does it bend cleanly? Crack? Snap?</li>
+        <li>Attempt to hammer it flatter.</li>
+        <li>Count how many hammer strikes before cracks appear.</li>
+      </ol>
+
+      <h4>Hot Test</h4>
+      <ol class="step-list">
+        <li>Heat the sample until it glows (if it can &mdash; note the color).</li>
+        <li>Attempt bending and hammering again.</li>
+        <li>Compare performance to cold test.</li>
+        <li>Record both grades.</li>
+      </ol>
+    </section>
+
+    <!-- IV. SECONDARY PROPERTIES -->
+    <section class="section" id="secondary">
+      <div class="section-header">
+        <span class="section-number">Section IV</span>
+        <h2>Secondary Properties</h2>
+      </div>
+      <p>Beyond the four core grades, these additional properties are useful. Record them when possible.</p>
+
+      <div class="grade-block">
+        <h3>Weight Class (W1 &ndash; W5)</h3>
+        <p class="grade-subtitle">Relative density &mdash; how heavy the material feels for its size.</p>
+        <div class="table-wrapper">
+          <table>
+            <thead><tr><th>Grade</th><th>Description</th><th>Examples</th></tr></thead>
+            <tbody>
+              <tr><td class="grade-col">W1</td><td>Very light</td><td>Cork, dry softwood, some foams</td></tr>
+              <tr><td class="grade-col">W2</td><td>Light</td><td>Hardwood, bone, leather</td></tr>
+              <tr><td class="grade-col">W3</td><td>Medium</td><td>Stone, common metals like iron</td></tr>
+              <tr><td class="grade-col">W4</td><td>Heavy</td><td>Lead, gold, dense alloys</td></tr>
+              <tr><td class="grade-col">W5</td><td>Extremely heavy</td><td>Tungsten-like, osmium-like</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="grade-block">
+        <h3>Heat Resistance (T1 &ndash; T5)</h3>
+        <p class="grade-subtitle">How the material behaves when exposed to heat.</p>
+        <div class="table-wrapper">
+          <table>
+            <thead><tr><th>Grade</th><th>Description</th><th>Examples</th></tr></thead>
+            <tbody>
+              <tr><td class="grade-col">T1</td><td>Burns or melts in campfire</td><td>Wood, leather, tin, lead</td></tr>
+              <tr><td class="grade-col">T2</td><td>Softens in a forge</td><td>Copper, bronze, gold, silver</td></tr>
+              <tr><td class="grade-col">T3</td><td>Requires strong forge to soften</td><td>Iron, mild steel</td></tr>
+              <tr><td class="grade-col">T4</td><td>Barely affected by a standard forge</td><td>Hardened steel</td></tr>
+              <tr><td class="grade-col">T5</td><td>Unaffected by any fire we can produce</td><td>Some ceramics, unknown monster materials?</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="grade-block">
+        <h3>Edge Holding (E1 &ndash; E5)</h3>
+        <p class="grade-subtitle">How well the material keeps a sharp edge after use.</p>
+        <div class="table-wrapper">
+          <table>
+            <thead><tr><th>Grade</th><th>Description</th><th>Examples</th></tr></thead>
+            <tbody>
+              <tr><td class="grade-col">E1</td><td>Dulls almost instantly</td><td>Lead, pure copper, gold</td></tr>
+              <tr><td class="grade-col">E2</td><td>Dulls quickly with use</td><td>Bronze, wrought iron</td></tr>
+              <tr><td class="grade-col">E3</td><td>Holds an edge with regular sharpening</td><td>Mild steel</td></tr>
+              <tr><td class="grade-col">E4</td><td>Holds a keen edge for extended use</td><td>High carbon steel</td></tr>
+              <tr><td class="grade-col">E5</td><td>Almost never dulls</td><td>Obsidian, diamond-edged?, unknown</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="grade-block">
+        <h3>Water Resistance (R1 &ndash; R3)</h3>
+        <div class="table-wrapper">
+          <table>
+            <thead><tr><th>Grade</th><th>Description</th><th>Examples</th></tr></thead>
+            <tbody>
+              <tr><td class="grade-col">R1</td><td>Absorbs water, weakens or rots when wet</td><td>Wood, cloth, paper</td></tr>
+              <tr><td class="grade-col">R2</td><td>Mildly affected by water over time</td><td>Iron (rusts), some bone</td></tr>
+              <tr><td class="grade-col">R3</td><td>Completely unaffected by water</td><td>Gold, stone, glass, ceramics</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="grade-block">
+        <h3>Toxicity (X0 &ndash; X3)</h3>
+        <div class="callout warning">
+          <div class="callout-label">Important</div>
+          <p>Always test with caution.</p>
+        </div>
+        <div class="table-wrapper">
+          <table>
+            <thead><tr><th>Grade</th><th>Description</th><th>Examples</th></tr></thead>
+            <tbody>
+              <tr><td class="grade-col">X0</td><td>Safe to handle and wear against skin</td><td>&mdash;</td></tr>
+              <tr><td class="grade-col">X1</td><td>Safe to handle briefly; wash hands after</td><td>Some ores, lead</td></tr>
+              <tr><td class="grade-col">X2</td><td>Causes irritation; wear gloves</td><td>Certain monster parts?</td></tr>
+              <tr><td class="grade-col" style="color:var(--red-light)">X3</td><td><strong>DANGEROUS.</strong> Do not handle without protection. Fumes may be harmful.</td><td>Arsenic-bearing ores, some unknown materials</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout tip">
+          <div class="callout-label">Better Test Method</div>
+          <p>Place material near ants or small insects. If they avoid it or die, treat it as X2 or higher.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- V. MATERIAL PROFILE SHEET -->
+    <section class="section" id="profile-sheet">
+      <div class="section-header">
+        <span class="section-number">Section V</span>
+        <h2>Material Profile Sheet</h2>
+      </div>
+      <p>Use this template to record any material you test. Copy it and fill in the blanks for each new material.</p>
+
+      <div class="profile-sheet">
+        <div class="sheet-title">Material Profile</div>
+        <span class="field-label">Name:</span>         <span class="field-blank">________________________________</span><br>
+        <span class="field-label">Source:</span>        <span class="field-blank">________________________________</span><br>
+        <span class="field-label">Date Tested:</span>   <span class="field-blank">________________________________</span><br>
+        <span class="field-label">Tested By:</span>     <span class="field-blank">________________________________</span><br>
+        <span class="field-label">Color:</span>         <span class="field-blank">________________________________</span><br>
+        <span class="field-label">Texture:</span>       <span class="field-blank">________________________________</span><br>
+        <span class="field-label">Smell:</span>         <span class="field-blank">________________________________</span><br>
+        <br>
+        <strong style="color:var(--gold)">Core Grades:</strong><br>
+        &nbsp;&nbsp;Hardness  (H): <span class="field-blank">__</span> / 10<br>
+        &nbsp;&nbsp;Flex      (F): <span class="field-blank">__</span> / 10<br>
+        &nbsp;&nbsp;Break     (B): <span class="field-blank">__</span> / 10<br>
+        &nbsp;&nbsp;Ductility (D): <span class="field-blank">__</span> / 10 (cold) &nbsp;<span class="field-blank">__</span> / 10 (hot)<br>
+        <br>
+        <strong style="color:var(--gold)">Secondary:</strong><br>
+        &nbsp;&nbsp;Weight    (W): <span class="field-blank">__</span> / 5<br>
+        &nbsp;&nbsp;Heat Res  (T): <span class="field-blank">__</span> / 5<br>
+        &nbsp;&nbsp;Edge Hold (E): <span class="field-blank">__</span> / 5<br>
+        &nbsp;&nbsp;Water Res (R): <span class="field-blank">__</span> / 3<br>
+        &nbsp;&nbsp;Toxicity  (X): <span class="field-blank">__</span> / 3<br>
+        <br>
+        <strong style="color:var(--gold)">Short Code:</strong> H_/F_/B_/D_ &nbsp;|&nbsp; W_ T_ E_ R_ X_<br>
+        <br>
+        <strong style="color:var(--gold)">Notes:</strong><br>
+        <span class="field-blank">__________________________________________________</span><br>
+        <span class="field-blank">__________________________________________________</span><br>
+        <br>
+        <strong style="color:var(--gold)">Recommended Use:</strong><br>
+        <span class="field-blank">__________________________________________________</span>
+      </div>
+    </section>
+
+    <!-- VI. REFERENCE TABLE -->
+    <section class="section" id="reference-table">
+      <div class="section-header">
+        <span class="section-number">Section VI</span>
+        <h2>Reference Table: Known Materials</h2>
+      </div>
+      <p>Use these as your baseline. When testing unknown materials, compare against these known profiles.</p>
+
+      <div class="table-wrapper">
+        <table class="ref-table">
+          <thead>
+            <tr>
+              <th>Material</th>
+              <th>H</th><th>F</th><th>B</th><th>D</th>
+              <th>W</th><th>T</th><th>E</th><th>R</th><th>X</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="material-name">Chalk</td><td class="g-low">1</td><td class="g-high">8</td><td class="g-low">1</td><td class="g-low">1</td><td>2</td><td>1</td><td>1</td><td>1</td><td>0</td></tr>
+            <tr><td class="material-name">Leather (soft)</td><td class="g-low">1</td><td class="g-low">1</td><td class="g-high">8</td><td class="g-na">-</td><td>2</td><td>1</td><td class="g-na">-</td><td>1</td><td>0</td></tr>
+            <tr><td class="material-name">Leather (hard)</td><td class="g-low">2</td><td class="g-low">3</td><td class="g-mid">7</td><td class="g-na">-</td><td>2</td><td>1</td><td class="g-na">-</td><td>2</td><td>0</td></tr>
+            <tr><td class="material-name">Wood (pine)</td><td class="g-low">2</td><td class="g-low">3</td><td class="g-mid">5</td><td class="g-na">-</td><td>1</td><td>1</td><td>2</td><td>1</td><td>0</td></tr>
+            <tr><td class="material-name">Wood (oak)</td><td class="g-low">3</td><td class="g-mid">5</td><td class="g-mid">6</td><td class="g-na">-</td><td>2</td><td>1</td><td>2</td><td>1</td><td>0</td></tr>
+            <tr><td class="material-name">Bone (common)</td><td class="g-low">3</td><td class="g-mid">6</td><td class="g-mid">4</td><td class="g-low">3</td><td>2</td><td>2</td><td>2</td><td>2</td><td>0</td></tr>
+            <tr><td class="material-name">Copper</td><td class="g-low">3</td><td class="g-mid">4</td><td class="g-mid">6</td><td class="g-mid">7</td><td>3</td><td>2</td><td>1</td><td>3</td><td>0</td></tr>
+            <tr><td class="material-name">Bronze</td><td class="g-mid">4</td><td class="g-mid">5</td><td class="g-mid">5</td><td class="g-mid">5</td><td>3</td><td>2</td><td>2</td><td>3</td><td>0</td></tr>
+            <tr><td class="material-name">Wrought Iron</td><td class="g-mid">4</td><td class="g-mid">5</td><td class="g-mid">6</td><td class="g-mid">5</td><td>3</td><td>3</td><td>2</td><td>2</td><td>0</td></tr>
+            <tr><td class="material-name">Glass</td><td class="g-mid">5</td><td class="g-high">9</td><td class="g-low">1</td><td class="g-low">1</td><td>3</td><td>2</td><td>5</td><td>3</td><td>0</td></tr>
+            <tr><td class="material-name">Cast Iron</td><td class="g-mid">5</td><td class="g-high">8</td><td class="g-low">3</td><td class="g-low">2</td><td>3</td><td>3</td><td>3</td><td>2</td><td>0</td></tr>
+            <tr><td class="material-name">Mild Steel</td><td class="g-mid">5</td><td class="g-mid">6</td><td class="g-mid">7</td><td class="g-mid">5</td><td>3</td><td>3</td><td>3</td><td>2</td><td>0</td></tr>
+            <tr><td class="material-name">Hard Steel</td><td class="g-mid">6</td><td class="g-mid">7</td><td class="g-mid">6</td><td class="g-mid">4</td><td>3</td><td>4</td><td>4</td><td>2</td><td>0</td></tr>
+            <tr><td class="material-name">Obsidian</td><td class="g-mid">6</td><td class="g-high">9</td><td class="g-low">2</td><td class="g-low">1</td><td>3</td><td>2</td><td>5</td><td>3</td><td>0</td></tr>
+            <tr><td class="material-name">Spring Steel</td><td class="g-mid">6</td><td class="g-mid">5</td><td class="g-high">8</td><td class="g-low">3</td><td>3</td><td>3</td><td>3</td><td>2</td><td>0</td></tr>
+            <tr><td class="material-name">Granite</td><td class="g-mid">7</td><td class="g-high">9</td><td class="g-mid">4</td><td class="g-low">1</td><td>3</td><td>5</td><td class="g-na">-</td><td>3</td><td>0</td></tr>
+            <tr><td class="material-name">Quartz Crystal</td><td class="g-mid">7</td><td class="g-high">9</td><td class="g-low">3</td><td class="g-low">1</td><td>3</td><td>4</td><td class="g-na">-</td><td>3</td><td>0</td></tr>
+            <tr><td class="material-name">Sapphire / Ruby</td><td class="g-high">9</td><td class="g-high">10</td><td class="g-mid">4</td><td class="g-low">1</td><td>4</td><td>5</td><td class="g-na">-</td><td>3</td><td>0</td></tr>
+            <tr><td class="material-name">Diamond</td><td class="g-high">10</td><td class="g-high">10</td><td class="g-low">3</td><td class="g-low">1</td><td>4</td><td>5</td><td class="g-na">-</td><td>3</td><td>0</td></tr>
+            <tr><td class="material-name">Gold</td><td class="g-low">2</td><td class="g-low">3</td><td class="g-mid">7</td><td class="g-high">9</td><td>4</td><td>2</td><td>1</td><td>3</td><td>0</td></tr>
+            <tr><td class="material-name">Lead</td><td class="g-low">1</td><td class="g-low">2</td><td class="g-mid">5</td><td class="g-high">8</td><td>4</td><td>1</td><td>1</td><td>3</td><td>1</td></tr>
+            <tr><td class="material-name">Antler</td><td class="g-mid">4</td><td class="g-mid">5</td><td class="g-mid">6</td><td class="g-low">3</td><td>2</td><td>1</td><td>2</td><td>2</td><td>0</td></tr>
+            <tr><td class="material-name">Shell (thick)</td><td class="g-low">3</td><td class="g-mid">7</td><td class="g-mid">4</td><td class="g-low">1</td><td>2</td><td>1</td><td class="g-na">-</td><td>3</td><td>0</td></tr>
+            <tr><td class="material-name">Sinew / Tendon</td><td class="g-low">1</td><td class="g-low">1</td><td class="g-high">9</td><td class="g-na">-</td><td>1</td><td>1</td><td class="g-na">-</td><td>1</td><td>0</td></tr>
+            <tr><td class="material-name">Horn</td><td class="g-low">3</td><td class="g-mid">4</td><td class="g-mid">6</td><td class="g-mid">4</td><td>2</td><td>1</td><td>2</td><td>2</td><td>0</td></tr>
+            <tr><td class="material-name">Tooth (large)</td><td class="g-mid">5</td><td class="g-mid">7</td><td class="g-mid">4</td><td class="g-low">2</td><td>2</td><td>2</td><td>3</td><td>2</td><td>0</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p><em>( "-" means the property does not apply or is not meaningful. )</em></p>
+    </section>
+
+    <!-- VII. UNKNOWN MATERIALS -->
+    <section class="section" id="unknown">
+      <div class="section-header">
+        <span class="section-number">Section VII</span>
+        <h2>Unknown Materials</h2>
+      </div>
+      <p>When you encounter a new material &mdash; especially from an unknown creature or a source that didn't exist before &mdash; follow this procedure:</p>
+
+      <h3>Step 1: Observe</h3>
+      <ul>
+        <li>Color, texture, smell, weight in hand.</li>
+        <li>Does it look like anything familiar? (Bone-like? Metal-like? Stone?)</li>
+        <li>Is it warm or cold to the touch?</li>
+        <li>Does it have any unusual features? (Glows, hums, pulses, etc.)</li>
+      </ul>
+      <div class="callout warning">
+        <div class="callout-label">Caution</div>
+        <p>Do not lick, inhale dust, or rub on bare skin until toxicity is checked.</p>
+      </div>
+
+      <h3>Step 2: Toxicity Check (First!)</h3>
+      <ol class="step-list">
+        <li>Place a small piece near insects. Observe reaction.</li>
+        <li>Rub on a covered area of skin through cloth. Wait.</li>
+        <li>If safe so far, brief bare skin contact on wrist. Wait one hour.</li>
+        <li>Assign X grade before proceeding with other tests.</li>
+      </ol>
+
+      <h3>Step 3: Run the Four Core Tests</h3>
+      <ul>
+        <li>Scratch test &rarr; <strong>H</strong> grade</li>
+        <li>Bend test &rarr; <strong>F</strong> grade</li>
+        <li>Drop test &rarr; <strong>B</strong> grade</li>
+        <li>Forge test &rarr; <strong>D</strong> grade</li>
+      </ul>
+
+      <h3>Step 4: Run Secondary Tests</h3>
+      <ul>
+        <li>Weigh it &rarr; <strong>W</strong> grade</li>
+        <li>Heat it &rarr; <strong>T</strong> grade</li>
+        <li>Sharpen and cut-test &rarr; <strong>E</strong> grade</li>
+        <li>Soak in water &rarr; <strong>R</strong> grade</li>
+      </ul>
+
+      <h3>Step 5: Record Everything</h3>
+      <p>Fill in a Material Profile Sheet (<a href="#profile-sheet">Section V</a>). Give it a name. If you don't know what it is, name it by source and appearance:</p>
+      <ul>
+        <li><code>"Red Boar Tusk"</code> &mdash; H6/F7/B5/D3 | W3 T3 E4 R2 X0</li>
+        <li><code>"Cave Serpent Scale"</code> &mdash; H8/F4/B7/D2 | W2 T4 E- R3 X1</li>
+      </ul>
+      <p>Store the profile with a sample piece for others to reference.</p>
+
+      <h3>Step 6: Share the Knowledge</h3>
+      <ul>
+        <li>Post the profile at your workshop or trading post.</li>
+        <li>Teach others to test materials the same way.</li>
+        <li><strong>Consistency is everything.</strong> Use the same testing rig and weights.</li>
+      </ul>
+    </section>
+
+    <!-- VIII. CRAFTING RECOMMENDATIONS -->
+    <section class="section" id="crafting">
+      <div class="section-header">
+        <span class="section-number">Section VIII</span>
+        <h2>Crafting Recommendations by Profile</h2>
+      </div>
+      <p>General guidelines for what material profiles are good for.</p>
+
+      <div class="rec-card">
+        <h4>Blade / Cutting Weapon</h4>
+        <div class="rec-ideal">H6+ &nbsp; F6+ &nbsp; B5+ &nbsp; D4+ &nbsp; E4+</div>
+        <p>You want hardness (holds an edge), stiffness (doesn't flex on impact), decent toughness (doesn't shatter), and enough ductility to actually forge it. Edge holding is critical.</p>
+        <p class="rec-best">Best known material: Hard/high carbon steel &mdash; <code>H6/F7/B6/D4/E4</code></p>
+      </div>
+
+      <div class="rec-card">
+        <h4>Blunt Weapon (Hammer, Mace)</h4>
+        <div class="rec-ideal">H4+ &nbsp; F6+ &nbsp; B7+ &nbsp; D3+ &nbsp; W3+</div>
+        <p>Hardness matters less. You want it heavy, stiff, and tough.</p>
+        <p class="rec-best">Best known materials: Dense stone, cast iron head on wood handle.</p>
+      </div>
+
+      <div class="rec-card">
+        <h4>Armor (Plate)</h4>
+        <div class="rec-ideal">H5+ &nbsp; F6+ &nbsp; B7+ &nbsp; D4+ &nbsp; W2-3</div>
+        <p>Must be hard enough to resist penetration, tough enough to absorb hits without cracking, and light enough to wear. Workability needed to shape it. <strong>This is the hardest combination to find.</strong></p>
+        <p class="rec-best">Best known material: Mild to medium steel &mdash; <code>H5/F6/B7/D5/W3</code></p>
+      </div>
+
+      <div class="rec-card">
+        <h4>Armor (Flexible &mdash; Chain, Scale, Lamellar)</h4>
+        <div class="rec-ideal">H4+ &nbsp; F3-5 &nbsp; B6+ &nbsp; D5+</div>
+        <p>Needs to flex with the body but still resist cuts. Toughness is more important than hardness here.</p>
+      </div>
+
+      <div class="rec-card">
+        <h4>Shield</h4>
+        <div class="rec-ideal">B8+ &nbsp; F4-6 &nbsp; W1-2</div>
+        <p>Toughness is king. Must absorb impacts without shattering. Weight should be manageable. Wood-and-leather composite works well.</p>
+      </div>
+
+      <div class="rec-card">
+        <h4>Bow / Flexible Weapon</h4>
+        <div class="rec-ideal">F2-4 &nbsp; B8+ &nbsp; D5+</div>
+        <p>Must flex significantly and spring back without breaking. Combination of flexibility and toughness is critical.</p>
+        <p class="rec-best">Best known materials: Yew wood, horn-sinew composite.</p>
+      </div>
+
+      <div class="rec-card">
+        <h4>Tool Handle</h4>
+        <div class="rec-ideal">F3-4 &nbsp; B7+ &nbsp; D(any) &nbsp; W1-2</div>
+        <p>Needs some flex to absorb shock, must not break, and light enough to swing all day.</p>
+        <p class="rec-best">Best known material: Ash wood, hickory.</p>
+      </div>
+
+      <div class="rec-card">
+        <h4>Building / Structural</h4>
+        <div class="rec-ideal">F7+ &nbsp; B6+ &nbsp; W2-3</div>
+        <p>Must be stiff and tough. Weight is less critical.</p>
+      </div>
+
+      <div class="rec-card">
+        <h4>Jewelry / Decoration</h4>
+        <div class="rec-ideal">D7+ &nbsp; R3 &nbsp; any H/F/B</div>
+        <p>Needs to be shapeable and resistant to tarnish/corrosion.</p>
+      </div>
+
+      <div class="rec-card">
+        <h4>Rope / Binding</h4>
+        <div class="rec-ideal">F1-2 &nbsp; B9+</div>
+        <p>Must be very flexible and nearly impossible to break by pulling.</p>
+        <p class="rec-best">Best known materials: Sinew, plant fiber, braided leather.</p>
+      </div>
+
+      <div class="rec-card">
+        <h4>Fire / Heat Applications</h4>
+        <div class="rec-ideal">T4+</div>
+        <p>Forge lining, fire shields, cooking surfaces, kiln building.</p>
+      </div>
+    </section>
+
+    <!-- IX. TESTING STATION -->
+    <section class="section" id="testing-station">
+      <div class="section-header">
+        <span class="section-number">Section IX</span>
+        <h2>Building Your Testing Station</h2>
+      </div>
+      <p>Every workshop should have a dedicated testing station. Here's how to build one with no technology.</p>
+
+      <h3>The Scratch Kit</h3>
+      <p>Collect and label these items. Keep them in a pouch or wooden box:</p>
+      <ol>
+        <li>Copper piece (coin, wire, or rod)</li>
+        <li>Iron nail</li>
+        <li>Steel knife (known standard &mdash; protect this, don't use it for anything else)</li>
+        <li>Quartz crystal</li>
+        <li>Any harder reference stones you can find</li>
+      </ol>
+      <p>Label each item with its Hardness grade.</p>
+
+      <h3>The Bending Rig</h3>
+      <h4>Construction</h4>
+      <ul>
+        <li>Two upright posts, firmly planted, exactly <strong>one hand-span</strong> apart (measure and mark your standard span on a stick &mdash; use this forever as your standard).</li>
+        <li>A flat, level support surface on each post at the same height.</li>
+        <li>A hook or notch at the center point between the posts, below the supports, for hanging weights.</li>
+      </ul>
+
+      <h4>Standard Sample Size</h4>
+      <ul>
+        <li><strong>Length:</strong> 1.5 hand-spans (so it overhangs each support)</li>
+        <li><strong>Width:</strong> 1 thumb-width</li>
+        <li><strong>Thickness:</strong> 1 finger-width (pinky)</li>
+      </ul>
+      <div class="callout">
+        <div class="callout-label">Critical</div>
+        <p>Always cut samples to this size for consistent results.</p>
+      </div>
+
+      <h4>Measuring</h4>
+      <ul>
+        <li>Mark a vertical stick in even increments (use a knotted string for consistent spacing).</li>
+        <li>Measure the sag at center under each weight.</li>
+      </ul>
+
+      <h3>The Drop Tower</h3>
+      <h4>Construction</h4>
+      <ul>
+        <li>A tall post or frame, at least 2 arm-lengths high.</li>
+        <li>A vertical guide channel (two parallel boards or rails) so the drop weight falls straight.</li>
+        <li>Height markings every half-hand-span up the post.</li>
+        <li>A flat, hard base (stone slab or anvil) at the bottom.</li>
+      </ul>
+
+      <h4>Drop Weight</h4>
+      <ul>
+        <li>A dense, uniform weight, ~2 kg.</li>
+        <li>Ideally iron or a very dense stone, shaped into a block.</li>
+        <li>Must fit smoothly in the guide channel.</li>
+      </ul>
+
+      <h4>Standard Sample</h4>
+      <ul>
+        <li>Same dimensions as bending test.</li>
+        <li>Supported at both ends (bridged), centered under drop point.</li>
+      </ul>
+
+      <h3>Standardized Weights</h3>
+      <p>Calibrate using water:</p>
+      <ul>
+        <li>Find or make a watertight container of known volume.</li>
+        <li>1 liter of water = 1 kg (approximately).</li>
+        <li>Fill a container, then find stones/metal that balance against it.</li>
+        <li>Mark and label your weights clearly.</li>
+      </ul>
+      <p><strong>Recommended set:</strong> 0.5 kg, 1 kg, 2 kg, 5 kg, 10 kg, 20 kg</p>
+      <div class="callout warning">
+        <div class="callout-label">Important</div>
+        <p>Keep these at your testing station. Do not use them for other purposes.</p>
+      </div>
+
+      <h3>The Forge Test Area</h3>
+      <ul>
+        <li>A small anvil or flat stone surface near your forge.</li>
+        <li>Hammer of known weight.</li>
+        <li>Tongs.</li>
+        <li>Mark a 90-degree angle on your anvil for consistent bend tests.</li>
+      </ul>
+    </section>
+
+    <!-- X. FINAL NOTES -->
+    <section class="section" id="final-notes">
+      <div class="section-header">
+        <span class="section-number">Section X</span>
+        <h2>Final Notes</h2>
+      </div>
+
+      <h3>Consistency Is Everything</h3>
+      <p>The exact numbers don't matter as much as everyone using the <em>same</em> standards. If your hand-span is your unit, use the same hand (or better, a marked measuring stick) every time. If your drop weight is a specific stone, keep that stone and never swap it.</p>
+
+      <h3>Teach Others</h3>
+      <p>This system only works if craftsmen everywhere use the same method. When trading materials, share the profile. When training apprentices, teach them to test first.</p>
+
+      <h3>Trust the Tests, Not Your Eyes</h3>
+      <p>A shiny material isn't always strong. A dull one isn't always weak. Monster parts may look terrifying but test as <code>H2/B2</code> &mdash; useless. Or a plain-looking bone might test at <code>H8/F6/B8/D3</code> &mdash; treasure. Always test. Always record.</p>
+
+      <h3>Update This Guide</h3>
+      <p>As new materials are found, add them to the reference table. As testing methods improve, refine them. This is a living document.</p>
+
+      <h3>When in Doubt, Combine</h3>
+      <p>No single material is perfect for everything. The best gear is often made from layered or combined materials:</p>
+      <ul>
+        <li>Hard blade edge + tough blade spine</li>
+        <li>Rigid plate over flexible padding</li>
+        <li>Stiff frame with flexible joints</li>
+      </ul>
+      <p>Understanding each material's profile lets you combine them intelligently.</p>
+    </section>
+
+    <div class="ornament-divider">&#x2726; &#x2726; &#x2726;</div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p class="quote">"Measure twice. Test once. Build to last."</p>
+    <p class="attribution">&mdash; First Principle of the Post-Collapse Craftsman</p>
+  </footer>
+
+  <!-- BACK TO TOP -->
+  <a href="#top" class="back-to-top" id="backToTop" aria-label="Back to top">&uarr;</a>
+
+  <script>
+    // Back to top button visibility
+    const btn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      btn.classList.toggle('visible', window.scrollY > 400);
+    });
+  </script>
+</body>
+</html>
