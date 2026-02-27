@@ -5,6 +5,7 @@
 > *Written for a world where technology has failed and knowledge must survive.*
 > *Keep this guide safe. Copy it. Teach it. It may save lives.*
 
+🌐 **[Read the full guide here](https://jmt-24.github.io/the-material-codex/)**
 ---
 
 ## Table of Contents
