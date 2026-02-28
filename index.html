@@ -46,7 +46,6 @@
       min-height: 100vh;
     }
 
-    /* --- HEADER --- */
     .hero {
       position: relative;
       text-align: center;
@@ -101,14 +100,12 @@
       line-height: 1.8;
     }
 
-    /* --- LAYOUT --- */
     .container {
       max-width: 900px;
       margin: 0 auto;
       padding: 0 1.5rem;
     }
 
-    /* --- NAVIGATION / TOC --- */
     .toc {
       background: var(--bg-card);
       border: 1px solid var(--border);
@@ -163,7 +160,6 @@
       color: var(--gold-light);
     }
 
-    /* --- SECTIONS --- */
     .section {
       margin: 4rem 0;
     }
@@ -234,7 +230,6 @@
 
     a:hover { border-bottom-color: var(--gold); }
 
-    /* --- GRADE CARDS --- */
     .grade-block {
       background: var(--bg-card);
       border: 1px solid var(--border);
@@ -255,7 +250,6 @@
       margin-bottom: 1.2rem;
     }
 
-    /* --- TABLES --- */
     .table-wrapper {
       overflow-x: auto;
       margin: 1.5rem 0;
@@ -308,7 +302,6 @@
       white-space: nowrap;
     }
 
-    /* --- REFERENCE TABLE (compact) --- */
     .ref-table th, .ref-table td {
       padding: 0.5rem 0.6rem;
       text-align: center;
@@ -325,13 +318,11 @@
       padding-left: 1rem;
     }
 
-    /* color-coded grade cells */
     .g-low { color: #7a9a6a; }
     .g-mid { color: var(--gold-light); }
     .g-high { color: var(--red-light); }
     .g-na { color: var(--text-dim); }
 
-    /* --- CALLOUTS --- */
     .callout {
       background: var(--bg-card);
       border-left: 3px solid var(--blue);
@@ -361,7 +352,6 @@
     .callout.warning .callout-label { color: var(--red-light); }
     .callout.tip .callout-label { color: var(--green); }
 
-    /* --- PROFILE SHEET --- */
     .profile-sheet {
       background: var(--bg-card);
       border: 2px solid var(--border);
@@ -389,7 +379,6 @@
     .profile-sheet .field-label { color: var(--text-bright); }
     .profile-sheet .field-blank { color: var(--border); }
 
-    /* --- LISTS --- */
     ul, ol {
       margin: 0.8rem 0 1rem 1.5rem;
     }
@@ -427,7 +416,6 @@
       color: var(--gold);
     }
 
-    /* --- RECOMMENDATION CARDS --- */
     .rec-card {
       background: var(--bg-card);
       border: 1px solid var(--border);
@@ -469,7 +457,6 @@
       font-size: 0.85rem;
     }
 
-    /* --- CODE --- */
     code {
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.88em;
@@ -479,7 +466,6 @@
       color: var(--gold-light);
     }
 
-    /* --- BLOCKQUOTE --- */
     blockquote {
       border-left: 3px solid var(--gold-dim);
       padding: 0.5rem 1.5rem;
@@ -488,7 +474,6 @@
       font-style: italic;
     }
 
-    /* --- DIVIDERS --- */
     hr {
       border: none;
       height: 1px;
@@ -505,7 +490,6 @@
       user-select: none;
     }
 
-    /* --- FOOTER --- */
     .footer {
       text-align: center;
       padding: 4rem 2rem 3rem;
@@ -540,7 +524,6 @@
       letter-spacing: 0.05em;
     }
 
-    /* --- BACK TO TOP --- */
     .back-to-top {
       position: fixed;
       bottom: 2rem;
@@ -572,7 +555,6 @@
       border-color: var(--gold-dim);
     }
 
-    /* --- RESPONSIVE --- */
     @media (max-width: 640px) {
       body { font-size: 16px; }
       .hero { padding: 3rem 1.5rem 2.5rem; }
@@ -583,7 +565,6 @@
       .ref-table th, .ref-table td { padding: 0.4rem; }
     }
 
-    /* --- PRINT --- */
     @media print {
       body { background: #fff; color: #222; }
       .back-to-top { display: none; }
@@ -595,7 +576,6 @@
 </head>
 <body>
 
-  <!-- HEADER -->
   <header class="hero" id="top">
     <div class="hero-ornament">&#x2726; &#x2726; &#x2726;</div>
     <h1>The Craftsman's Material Guide</h1>
@@ -608,7 +588,6 @@
 
   <main class="container">
 
-    <!-- TABLE OF CONTENTS -->
     <nav class="toc">
       <h2>Table of Contents</h2>
       <ol>
@@ -625,15 +604,14 @@
       </ol>
     </nav>
 
-    <!-- I. PURPOSE -->
     <section class="section" id="purpose">
       <div class="section-header">
         <span class="section-number">Section I</span>
         <h2>Purpose of This Guide</h2>
       </div>
-      <p>When machines no longer work, we still need to build, fight, and survive. A blacksmith, leatherworker, or armor-maker needs to know what they're working with - quickly and reliably.</p>
+      <p>When machines no longer work, we still need to build, fight, and survive. A blacksmith, leatherworker, or armor-maker needs to know what they're working with, quickly and reliably.</p>
       <p>This guide provides a <strong>universal grading system</strong> that any craftsman can use with simple tools. No electricity. No computers. Just your hands, some reference objects, and a basic testing station.</p>
-      <p>Every material - whether stone, metal, bone, hide, wood, or something from a creature never seen before &mdash; can be graded using this system.</p>
+      <p>Every material (whether stone, metal, bone, hide, wood, or something from a creature never seen before) can be graded using this system.</p>
 
       <div class="table-wrapper">
         <table>
@@ -649,10 +627,9 @@
         </table>
       </div>
 
-      <p>A material is written as: <code>H_/F_/B_/D_</code> - for example, <code>H7/F8/B4/D2</code></p>
+      <p>A material is written as: <code>H_/F_/B_/D_</code> -- for example, <code>H7/F8/B4/D2</code></p>
     </section>
 
-    <!-- II. CORE GRADES -->
     <section class="section" id="core-grades">
       <div class="section-header">
         <span class="section-number">Section II</span>
@@ -660,9 +637,8 @@
       </div>
       <p>Each grade runs from <strong>1 to 10</strong>. Higher is "more" of that property.</p>
 
-      <!-- HARDNESS -->
       <div class="grade-block">
-        <h3>Hardness Grade (H1 &ndash; H10)</h3>
+        <h3>Hardness Grade (H1 to H10)</h3>
         <p class="grade-subtitle">How resistant is the surface to scratching and denting?</p>
         <div class="table-wrapper">
           <table>
@@ -687,9 +663,8 @@
         </div>
       </div>
 
-      <!-- FLEX -->
       <div class="grade-block">
-        <h3>Flex Grade (F1 &ndash; F10)</h3>
+        <h3>Flex Grade (F1 to F10)</h3>
         <p class="grade-subtitle">How much does a standard sample bend under a standard load?</p>
         <div class="table-wrapper">
           <table>
@@ -714,9 +689,8 @@
         </div>
       </div>
 
-      <!-- BREAK -->
       <div class="grade-block">
-        <h3>Break Grade (B1 &ndash; B10)</h3>
+        <h3>Break Grade (B1 to B10)</h3>
         <p class="grade-subtitle">How much impact energy can the material absorb before it fractures?</p>
         <div class="table-wrapper">
           <table>
@@ -731,7 +705,7 @@
               <tr><td class="grade-col">B7</td><td>Resists most impacts</td><td>Quality steel, tough hide</td></tr>
               <tr><td class="grade-col">B8</td><td>Absorbs extreme impacts</td><td>Spring steel, layered materials</td></tr>
               <tr><td class="grade-col">B9</td><td>Nearly unbreakable by manual force</td><td>Some alloys, sinew-wrapped</td></tr>
-              <tr><td class="grade-col">B10</td><td>Cannot be fractured by any known manual method</td><td>-</td></tr>
+              <tr><td class="grade-col">B10</td><td>Cannot be fractured by any known manual method</td><td>(none confirmed)</td></tr>
             </tbody>
           </table>
         </div>
@@ -741,9 +715,8 @@
         </div>
       </div>
 
-      <!-- DUCTILITY -->
       <div class="grade-block">
-        <h3>Ductility Grade (D1 &ndash; D10)</h3>
+        <h3>Ductility Grade (D1 to D10)</h3>
         <p class="grade-subtitle">How much can the material be reshaped without breaking?</p>
         <div class="table-wrapper">
           <table>
@@ -764,12 +737,11 @@
         </div>
         <div class="callout">
           <div class="callout-label">Note on Heat</div>
-          <p>Some materials change grade dramatically when heated. Always record both cold and hot grades where possible: <code>D3(cold) / D7(hot)</code> - hard to work cold, very workable hot.</p>
+          <p>Some materials change grade dramatically when heated. Always record both cold and hot grades where possible: <code>D3(cold) / D7(hot)</code> means hard to work cold, very workable hot.</p>
         </div>
       </div>
     </section>
 
-    <!-- III. TESTING METHODS -->
     <section class="section" id="testing-methods">
       <div class="section-header">
         <span class="section-number">Section III</span>
@@ -778,14 +750,14 @@
       <p>Each test is designed to be performed by one or two people with simple tools. No technology required.</p>
 
       <h3>Scratch Test (for Hardness)</h3>
-      <h4>Required Tools - The "Scratch Kit"</h4>
+      <h4>Required Tools -- The "Scratch Kit"</h4>
       <ol>
         <li>Your fingernail</li>
         <li>A copper coin or copper rod</li>
         <li>An iron nail</li>
         <li>A steel knife blade (known good steel)</li>
         <li>A piece of quartz (common clear/white rock crystal)</li>
-        <li>A corundum fragment (if available - ruby, sapphire, emery stone)</li>
+        <li>A corundum fragment (if available: ruby, sapphire, emery stone)</li>
         <li>A diamond chip (if available)</li>
       </ol>
 
@@ -793,7 +765,7 @@
       <ol class="step-list">
         <li>Clean the material surface.</li>
         <li>Starting from softest tool (fingernail), firmly drag each tool across the surface with moderate pressure.</li>
-        <li>Check for a visible scratch mark (not just a color streak - wipe the area and look for an actual groove).</li>
+        <li>Check for a visible scratch mark (not just a color streak; wipe the area and look for an actual groove).</li>
         <li>The grade equals the highest reference tool that <em>fails</em> to scratch the material, plus one.</li>
         <li>If the material scratches your steel knife, it is at least H7. Continue with harder references if available.</li>
       </ol>
@@ -803,7 +775,7 @@
         <ul>
           <li>Always scratch in the same direction.</li>
           <li>Use a magnifying lens if available to confirm fine scratches.</li>
-          <li>Test multiple spots - some materials are harder on the surface.</li>
+          <li>Test multiple spots, as some materials are harder on the surface.</li>
         </ul>
       </div>
 
@@ -885,14 +857,13 @@
 
       <h4>Hot Test</h4>
       <ol class="step-list">
-        <li>Heat the sample until it glows (if it can - note the color).</li>
+        <li>Heat the sample until it glows (if it can; note the color).</li>
         <li>Attempt bending and hammering again.</li>
         <li>Compare performance to cold test.</li>
         <li>Record both grades.</li>
       </ol>
     </section>
 
-    <!-- IV. SECONDARY PROPERTIES -->
     <section class="section" id="secondary">
       <div class="section-header">
         <span class="section-number">Section IV</span>
@@ -901,8 +872,8 @@
       <p>Beyond the four core grades, these additional properties are useful. Record them when possible.</p>
 
       <div class="grade-block">
-        <h3>Weight Class (W1 &ndash; W5)</h3>
-        <p class="grade-subtitle">Relative density - how heavy the material feels for its size.</p>
+        <h3>Weight Class (W1 to W5)</h3>
+        <p class="grade-subtitle">Relative density -- how heavy the material feels for its size.</p>
         <div class="table-wrapper">
           <table>
             <thead><tr><th>Grade</th><th>Description</th><th>Examples</th></tr></thead>
@@ -918,7 +889,7 @@
       </div>
 
       <div class="grade-block">
-        <h3>Heat Resistance (T1 &ndash; T5)</h3>
+        <h3>Heat Resistance (T1 to T5)</h3>
         <p class="grade-subtitle">How the material behaves when exposed to heat.</p>
         <div class="table-wrapper">
           <table>
@@ -935,7 +906,7 @@
       </div>
 
       <div class="grade-block">
-        <h3>Edge Holding (E1 &ndash; E5)</h3>
+        <h3>Edge Holding (E1 to E5)</h3>
         <p class="grade-subtitle">How well the material keeps a sharp edge after use.</p>
         <div class="table-wrapper">
           <table>
@@ -952,7 +923,7 @@
       </div>
 
       <div class="grade-block">
-        <h3>Water Resistance (R1 &ndash; R3)</h3>
+        <h3>Water Resistance (R1 to R3)</h3>
         <div class="table-wrapper">
           <table>
             <thead><tr><th>Grade</th><th>Description</th><th>Examples</th></tr></thead>
@@ -966,7 +937,7 @@
       </div>
 
       <div class="grade-block">
-        <h3>Toxicity (X0 &ndash; X3)</h3>
+        <h3>Toxicity (X0 to X3)</h3>
         <div class="callout warning">
           <div class="callout-label">Important</div>
           <p>Always test with caution.</p>
@@ -975,7 +946,7 @@
           <table>
             <thead><tr><th>Grade</th><th>Description</th><th>Examples</th></tr></thead>
             <tbody>
-              <tr><td class="grade-col">X0</td><td>Safe to handle and wear against skin</td><td>-</td></tr>
+              <tr><td class="grade-col">X0</td><td>Safe to handle and wear against skin</td><td>(most common materials)</td></tr>
               <tr><td class="grade-col">X1</td><td>Safe to handle briefly; wash hands after</td><td>Some ores, lead</td></tr>
               <tr><td class="grade-col">X2</td><td>Causes irritation; wear gloves</td><td>Certain monster parts?</td></tr>
               <tr><td class="grade-col" style="color:var(--red-light)">X3</td><td><strong>DANGEROUS.</strong> Do not handle without protection. Fumes may be harmful.</td><td>Arsenic-bearing ores, some unknown materials</td></tr>
@@ -989,7 +960,6 @@
       </div>
     </section>
 
-    <!-- V. MATERIAL PROFILE SHEET -->
     <section class="section" id="profile-sheet">
       <div class="section-header">
         <span class="section-number">Section V</span>
@@ -1031,7 +1001,6 @@
       </div>
     </section>
 
-    <!-- VI. REFERENCE TABLE -->
     <section class="section" id="reference-table">
       <div class="section-header">
         <span class="section-number">Section VI</span>
@@ -1081,13 +1050,12 @@
       <p><em>( "-" means the property does not apply or is not meaningful. )</em></p>
     </section>
 
-    <!-- VII. UNKNOWN MATERIALS -->
     <section class="section" id="unknown">
       <div class="section-header">
         <span class="section-number">Section VII</span>
         <h2>Unknown Materials</h2>
       </div>
-      <p>When you encounter a new material - especially from an unknown creature or a source that didn't exist before - follow this procedure:</p>
+      <p>When you encounter a new material (especially from an unknown creature or a source that didn't exist before) follow this procedure:</p>
 
       <h3>Step 1: Observe</h3>
       <ul>
@@ -1128,8 +1096,8 @@
       <h3>Step 5: Record Everything</h3>
       <p>Fill in a Material Profile Sheet (<a href="#profile-sheet">Section V</a>). Give it a name. If you don't know what it is, name it by source and appearance:</p>
       <ul>
-        <li><code>"Red Boar Tusk"</code> - H6/F7/B5/D3 | W3 T3 E4 R2 X0</li>
-        <li><code>"Cave Serpent Scale"</code> - H8/F4/B7/D2 | W2 T4 E- R3 X1</li>
+        <li><code>"Red Boar Tusk"</code> -- H6/F7/B5/D3 | W3 T3 E4 R2 X0</li>
+        <li><code>"Cave Serpent Scale"</code> -- H8/F4/B7/D2 | W2 T4 E- R3 X1</li>
       </ul>
       <p>Store the profile with a sample piece for others to reference.</p>
 
@@ -1141,7 +1109,6 @@
       </ul>
     </section>
 
-    <!-- VIII. CRAFTING RECOMMENDATIONS -->
     <section class="section" id="crafting">
       <div class="section-header">
         <span class="section-number">Section VIII</span>
@@ -1153,7 +1120,7 @@
         <h4>Blade / Cutting Weapon</h4>
         <div class="rec-ideal">H6+ &nbsp; F6+ &nbsp; B5+ &nbsp; D4+ &nbsp; E4+</div>
         <p>You want hardness (holds an edge), stiffness (doesn't flex on impact), decent toughness (doesn't shatter), and enough ductility to actually forge it. Edge holding is critical.</p>
-        <p class="rec-best">Best known material: Hard/high carbon steel - <code>H6/F7/B6/D4/E4</code></p>
+        <p class="rec-best">Best known material: Hard/high carbon steel -- <code>H6/F7/B6/D4/E4</code></p>
       </div>
 
       <div class="rec-card">
@@ -1167,11 +1134,11 @@
         <h4>Armor (Plate)</h4>
         <div class="rec-ideal">H5+ &nbsp; F6+ &nbsp; B7+ &nbsp; D4+ &nbsp; W2-3</div>
         <p>Must be hard enough to resist penetration, tough enough to absorb hits without cracking, and light enough to wear. Workability needed to shape it. <strong>This is the hardest combination to find.</strong></p>
-        <p class="rec-best">Best known material: Mild to medium steel - <code>H5/F6/B7/D5/W3</code></p>
+        <p class="rec-best">Best known material: Mild to medium steel -- <code>H5/F6/B7/D5/W3</code></p>
       </div>
 
       <div class="rec-card">
-        <h4>Armor (Flexible - Chain, Scale, Lamellar)</h4>
+        <h4>Armor (Flexible -- Chain, Scale, Lamellar)</h4>
         <div class="rec-ideal">H4+ &nbsp; F3-5 &nbsp; B6+ &nbsp; D5+</div>
         <p>Needs to flex with the body but still resist cuts. Toughness is more important than hardness here.</p>
       </div>
@@ -1222,7 +1189,6 @@
       </div>
     </section>
 
-    <!-- IX. TESTING STATION -->
     <section class="section" id="testing-station">
       <div class="section-header">
         <span class="section-number">Section IX</span>
@@ -1235,7 +1201,7 @@
       <ol>
         <li>Copper piece (coin, wire, or rod)</li>
         <li>Iron nail</li>
-        <li>Steel knife (known standard - protect this, don't use it for anything else)</li>
+        <li>Steel knife (known standard; protect this, don't use it for anything else)</li>
         <li>Quartz crystal</li>
         <li>Any harder reference stones you can find</li>
       </ol>
@@ -1244,7 +1210,7 @@
       <h3>The Bending Rig</h3>
       <h4>Construction</h4>
       <ul>
-        <li>Two upright posts, firmly planted, exactly <strong>one hand-span</strong> apart (measure and mark your standard span on a stick - use this forever as your standard).</li>
+        <li>Two upright posts, firmly planted, exactly <strong>one hand-span</strong> apart (measure and mark your standard span on a stick; use this forever as your standard).</li>
         <li>A flat, level support surface on each post at the same height.</li>
         <li>A hook or notch at the center point between the posts, below the supports, for hanging weights.</li>
       </ul>
@@ -1311,7 +1277,6 @@
       </ul>
     </section>
 
-    <!-- X. FINAL NOTES -->
     <section class="section" id="final-notes">
       <div class="section-header">
         <span class="section-number">Section X</span>
@@ -1325,7 +1290,7 @@
       <p>This system only works if craftsmen everywhere use the same method. When trading materials, share the profile. When training apprentices, teach them to test first.</p>
 
       <h3>Trust the Tests, Not Your Eyes</h3>
-      <p>A shiny material isn't always strong. A dull one isn't always weak. Monster parts may look terrifying but test as <code>H2/B2</code> - useless. Or a plain-looking bone might test at <code>H8/F6/B8/D3</code> - treasure. Always test. Always record.</p>
+      <p>A shiny material isn't always strong. A dull one isn't always weak. Monster parts may look terrifying but test as <code>H2/B2</code>, which means useless for most purposes. Or a plain-looking bone might test at <code>H8/F6/B8/D3</code>, which is genuine treasure. Always test. Always record.</p>
 
       <h3>Update This Guide</h3>
       <p>As new materials are found, add them to the reference table. As testing methods improve, refine them. This is a living document.</p>
@@ -1344,17 +1309,14 @@
 
   </main>
 
-  <!-- FOOTER -->
   <footer class="footer">
     <p class="quote">"Measure twice. Test once. Build to last."</p>
-    <p class="attribution">- First Principle of the Post-Collapse Craftsman</p>
+    <p class="attribution">First Principle of the Post-Collapse Craftsman</p>
   </footer>
 
-  <!-- BACK TO TOP -->
   <a href="#top" class="back-to-top" id="backToTop" aria-label="Back to top">&uarr;</a>
 
   <script>
-    // Back to top button visibility
     const btn = document.getElementById('backToTop');
     window.addEventListener('scroll', () => {
       btn.classList.toggle('visible', window.scrollY > 400);
